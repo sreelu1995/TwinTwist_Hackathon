@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TrulyMeetable.UserInterest>
+
+@{
+    ViewBag.Title = "FindFriends";
+}
+
+<h2>FindFriends</h2>
+<br />
+<style>
+    body {
+        background-color: #64F325;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 80%;
+        background-color: #E7B53A;
+        color: #EF2F7A;
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    .container {
+        padding: 2px 16px;
+    }
+</style>
+@foreach (var item in Model)
+            {
+<div class="card">
+    <br />
+    <div class="container">
+                        @Html.DisplayFor(modelItem => item.UserName)
+                        @Html.ActionLink("Follow", "Follow")
+            </div>
+</div>
+}

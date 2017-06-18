@@ -1,0 +1,69 @@
+﻿@model TrulyMeetable.UserInterest
+
+@{
+    ViewBag.Title = "Wall";
+}
+<style>
+    body {
+        background-color: #64F325;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 80%;
+        background-color: #E7B53A;
+        color: #EF2F7A;
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    .container {
+        padding: 2px 16px;
+    }
+</style>
+<center><h3>Interest</h3></center>
+<hr />
+<p>
+    Share with us what you like. So that we can help you reach your goals.
+</p>
+<hr />
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+        
+        @Html.ValidationSummary(true)
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Interest, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">   
+                
+                @Html.RadioButtonFor(model => model.Interest, "Running")@Html.Label("Runner")
+                @Html.RadioButtonFor(model => model.Interest, "Trekking")@Html.Label("Trekker")
+                @Html.RadioButtonFor(model => model.Interest, "Foodie")@Html.Label("Foodie")
+                @Html.RadioButtonFor(model => model.Interest, "Techy")@Html.Label("Techy")
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Interest" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

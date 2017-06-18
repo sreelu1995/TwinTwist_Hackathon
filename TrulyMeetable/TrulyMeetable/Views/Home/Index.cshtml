@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length };
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+    }
+    </script>
+<style>
+    
+
+    .button {
+        background-color: #008CBA;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+        .button:hover {
+            background-color: white;
+            color: #008CBA;
+        }
+    .button1 {
+        background-color: green;
+    }
+</style>
+<div class="w3-content w3-display-container">
+    <br />
+    <img class="mySlides" src="~/Images/Image1.jpg" style="width:100%">
+    <img class="mySlides" src="~/Images/Image2.jpg" style="width:100%">
+    <img class="mySlides" src="~/Images/Image3.jpg" style="width:100%">
+    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+</div>
+<div>
+    <br />
+    <a href="/EventOper/index" id="button0" class="button">Topics</a>&nbsp;&nbsp;&nbsp;
+    <a href="/Topics/Running" id="button1" class="button">Running</a>&nbsp;&nbsp;&nbsp;
+    <a href="/Topics/Techy" id="button2" class="button">Techy</a>&nbsp;&nbsp;&nbsp;
+    <a href="/Topics/Trek" id="button3" class="button">Trekking</a>&nbsp;&nbsp;&nbsp;
+    <a href="/Topics/Foodie" id="button4" class="button">Foodie</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+    @*<input id="Text1" type="date" />*@`
+
+    @using (Html.BeginForm("Calendar", "Home", FormMethod.Get))
+    {
+
+         <input id="Text1" type="date" />
+        
+        <input type="submit" value="View Events" />
+    }
+    @*@Html.ActionLink("Display Events", "Calendar", new { id = "@Text1" })*@
+
+    @*<input type="button" id="button6" value="View Events" onclick="location.href='@Url.Action("Calendar", "Topic")?' + $('#Text1').val()" />*@
+
+     @*<a href="/Topics/Calendar" id="button4" class="button1 button" >Event Calendar</a>*@
+
+</div>
+<div class="row">
+    <div class="col-md-4">        
+        <h2>Create Event</h2>       
+         <p>
+            TwinTwist helps you to create events and publicise with people with similar interest.
+        </p>
+        <p><a class="button" href="/EventOper/Create/">Create Event &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Upcoming Events</h2>
+        <p>You know your passion. We make you know where it happen. Click to browse the events around you.</p>
+        <p><a class="button" href="/EventOper/">Upcoming Events &raquo;</a></p>
+    </div>
+    <div class="col-md-4">  
+        <h2> Socialise</h2>
+        <p>Like!! Comment!! Share!! Follow!! And More!!<br />We help you follow your headed, may be hearted people!! Know what people around you are doing here.</p>
+        <p><a class="button" href="/EventOper/Wall">Like and Follow &raquo;</a></p>
+    </div>
+</div>
